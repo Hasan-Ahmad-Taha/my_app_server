@@ -60,7 +60,31 @@ const login = async (req, res) => {
     }
 }
 
+const UpdateUser = async (req, res) => {
+    try {
+        const { _id, UserUpdate } = req.body;
+        const newUser = await USERMODEL.findOneAndUpdate(
+            { _id },
+            UserUpdate,
+            { new: true, runValidators:true, lean:true,}
+        )
+        res.status(200).json({
+            succsess: !!newUser,
+            message: "user updated " + !!newUser ? "succsess ✅" : "faild ❌",
+            newUser
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            succsess: false,
+            errormessage: error.massage,
+            message: "I am so sory"
+        })
+    };
+}
+
 module.exports = {
     createUser,
-    login
-}
+    login,
+    UpdateUser,
+};
