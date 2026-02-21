@@ -8,6 +8,7 @@ const USER_SCHEMA = new Schema({
     phonenumber: {
         type: String,
         required: true,
+        unique:true,
         mact:[/^\d{10}$/, "phone number must be 10 digits"]
     },
    age: {

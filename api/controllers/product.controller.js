@@ -29,22 +29,10 @@ const createProduct = async (req, res) => {
         });
     }
 };
-const findAllProduct=async  (req, res) => {
-    const {
-        name,
-        price,
-        image,
-        category
-    } = req.body
+
+const findAllProduct = async (req, res) => {
     try {
-        const product = await productModele.find({
-            name,
-            price,
-            image,
-            category,
-
-        })
-
+        const product = await productModele.find(req.body)
         res.status(200).json({
             product,
             sucsess: true,
@@ -62,4 +50,5 @@ const findAllProduct=async  (req, res) => {
 
 module.exports = {
     createProduct,
+    findAllProduct,
 }
