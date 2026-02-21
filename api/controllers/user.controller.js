@@ -34,7 +34,7 @@ const login = async (req, res) => {
         if (!user) {
             res.status(400).json({
                 success: false,
-                Message: "user not found"
+                message: "user not found"
             })
             return;
         }
@@ -42,7 +42,7 @@ const login = async (req, res) => {
             res.status(200).json({
                 user,
                 success: true,
-                Message: "welcome" + user.name
+                message: "welcome" + user.name
             });
         }
         else {
